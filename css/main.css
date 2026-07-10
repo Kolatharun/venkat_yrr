@@ -3283,6 +3283,39 @@ header.scrolled .btn-secondary:hover {
 }
 
 /* ==========================================================================
+   DESKTOP HERO — 1200px and above
+   Header is position:absolute and overlays the hero by design (transparent
+   glass nav on the background photo). .hero-video-container bottom-anchors
+   its text (justify-content: flex-end) inside a 100vh box, so on shorter
+   desktop viewports (e.g. a maximized browser window with toolbars eating
+   into vh, or a laptop whose real innerHeight is well under its screen
+   resolution) the heading can be pushed up far enough to render underneath
+   the header. Reserving padding-top equal to the header's real height keeps
+   the text clear of it, and min-height puts a floor under the hero itself
+   so it can never get short enough for that padding-top to be breached.
+   Both values are split into two width tiers because .hero-video-container's
+   padding-bottom (12%) is resolved against viewport width, so wider desktop
+   viewports need proportionally more reserved space. Neither value has any
+   effect at already-working (taller) viewports — the bottom-anchored text
+   already sits well clear of the header there.
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .hero-video-container {
+    padding-top: 170px;
+  }
+
+  .hero {
+    min-height: 760px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero {
+    min-height: 820px;
+  }
+}
+
+/* ==========================================================================
    VANTA BIRDS — AMBIENT INTERACTIVE BACKGROUND
    ========================================================================== */
 

@@ -641,72 +641,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })();
 
-  // 10b. Location Overview Accordion (single-open, with image crossfade)
-  (function () {
-    const accordion = document.getElementById('lo-accordion');
-    if (!accordion) return;
-
-    const items = accordion.querySelectorAll('.lo-item');
-    const images = document.querySelectorAll('.lo-visual-img');
-
-    function openItem(item, animate) {
-      const content = item.querySelector('.lo-item-content');
-      const icon = item.querySelector('.lo-item-icon span:last-child');
-      const header = item.querySelector('.lo-item-header');
-      item.classList.add('is-open');
-      header.setAttribute('aria-expanded', 'true');
-
-      if (animate) {
-        gsap.to(content, { height: 'auto', duration: 0.6, ease: 'power3.inOut' });
-        gsap.to(icon, { scaleY: 0, duration: 0.4, ease: 'power2.out' });
-      } else {
-        gsap.set(content, { height: 'auto' });
-        gsap.set(icon, { scaleY: 0 });
-      }
-    }
-
-    function closeItem(item) {
-      const content = item.querySelector('.lo-item-content');
-      const icon = item.querySelector('.lo-item-icon span:last-child');
-      const header = item.querySelector('.lo-item-header');
-      item.classList.remove('is-open');
-      header.setAttribute('aria-expanded', 'false');
-
-      gsap.to(content, { height: 0, duration: 0.5, ease: 'power3.inOut' });
-      gsap.to(icon, { scaleY: 1, duration: 0.4, ease: 'power2.out' });
-    }
-
-    items.forEach((item) => {
-      const content = item.querySelector('.lo-item-content');
-
-      if (item.classList.contains('is-open')) {
-        openItem(item, false);
-      } else {
-        gsap.set(content, { height: 0 });
-      }
-
-      item.querySelector('.lo-item-header').addEventListener('click', () => {
-        const alreadyOpen = item.classList.contains('is-open');
-
-        items.forEach((other) => {
-          if (other !== item && other.classList.contains('is-open')) {
-            closeItem(other);
-          }
-        });
-
-        if (alreadyOpen) {
-          closeItem(item);
-        } else {
-          openItem(item, true);
-
-          const targetIndex = item.dataset.loIndex;
-          images.forEach((img) => {
-            img.classList.toggle('is-active', img.dataset.loImage === targetIndex);
-          });
-        }
-      });
-    });
-  })();
+  // 10b. Location Overview — map + auto-scrolling landmark list (pure CSS animation, no JS needed)
 
   // 11. Testimonials — drag-to-scroll + arrow navigation
   (function () {
@@ -1113,11 +1048,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3. Paragraph
       'p, .about-text, .nri-text p',
       // 4. Cards
-      '.stats-card, .feature-card, .si-card, .tm-card, .nri-card, .about-point-card, .lo-item, .partner-logo-item, .form-group',
+      '.stats-card, .feature-card, .si-card, .tm-card, .nri-card, .about-point-card, .lo-list-item, .partner-logo-item, .form-group',
       // 5. Buttons
-      '.btn-primary, .btn-secondary, .cf-submit-btn, .nri-link, .lo-learn-more, .card-cta, .si-nav-arrows button, .tm-nav-arrows button, .sg-controls button, .cf-footer-cta, .btn-video-text, .hero-video-btn',
+      '.btn-primary, .btn-secondary, .cf-submit-btn, .nri-link, .lo-map-btn, .card-cta, .si-nav-arrows button, .tm-nav-arrows button, .sg-controls button, .cf-footer-cta, .btn-video-text, .hero-video-btn',
       // 6. Images
-      '.about-photo-card, .lo-visual, .nri-card img, .cf-footer-logo, .hero-bg-image, .about-bg-image, .lo-visual-img, .partner-logo-img, .tm-card-avatar',
+      '.about-photo-card, .lo-map-visual, .nri-card img, .cf-footer-logo, .hero-bg-image, .about-bg-image, .partner-logo-img, .tm-card-avatar',
       // 7. Statistics
       '.hero-stats, .stats-cards-grid, .stat-number-val, .sg-counter'
     ];

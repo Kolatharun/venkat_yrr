@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="lenis">
 <head>
   <meta charset="UTF-8">
@@ -409,6 +409,9 @@
 
           <!-- Card 2: Content Card -->
           <div class="feature-card content-card">
+            <div class="card-hover-image">
+              <img src="Assets/Img/airport.webp" alt="" loading="lazy">
+            </div>
             <div class="card-icon-box">
               <!-- Location Icon -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -425,6 +428,9 @@
 
           <!-- Card 3: Content Card -->
           <div class="feature-card content-card">
+            <div class="card-hover-image">
+              <img src="Assets/Img/roads-img.webp" alt="" loading="lazy">
+            </div>
             <div class="card-icon-box">
               <!-- Shield Icon -->
                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -441,9 +447,12 @@
 
           <!-- Card 4: Content Card -->
           <div class="feature-card content-card">
+            <div class="card-hover-image">
+              <img src="Assets/Img/disc.webp" alt="" loading="lazy">
+            </div>
             <div class="card-icon-box">
               <!-- Villa/Home Icon -->
-            
+
 
                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -458,6 +467,9 @@
 
           <!-- Card 5: Content Card -->
           <div class="feature-card content-card">
+            <div class="card-hover-image">
+              <img src="Assets/Img/avenue-plantation-img.webp" alt="" loading="lazy">
+            </div>
             <div class="card-icon-box">
               <!-- Growth Arrow Icon -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -813,104 +825,118 @@
       </div>
     </section>
 
-    <!-- LOCATION OVERVIEW — Accordion with real project imagery -->
+    <!-- LOCATION OVERVIEW — Map + auto-scrolling nearby landmarks -->
     <section class="location-overview" id="location">
       <div class="container">
-        <div class="lo-header">
-          <span class="lo-eyebrow">LOCATION ADVANTAGE </span>
-          <h2 class="lo-title">Location <span class="location-overview-color">Overview</span></h2>
-          <p class="lo-subtitle">Experience the advantage of a prime location with excellent connectivity, established infrastructure, and a future-ready investment destination.</p>
-        </div>
-
         <div class="lo-grid">
-          <div class="lo-visual">
-            <img src="Assets/Img/work_04.webp" alt="Landmark commercial towers near Yoshitha Infra developments" class="lo-visual-img is-active" data-lo-image="0" loading="lazy">
-            <img src="Assets/Img/airport.webp" alt="Landscaped highway connectivity near Yoshitha Infra developments" class="lo-visual-img" data-lo-image="1" loading="lazy">
-            <img src="Assets/Img/orr.webp" alt="Weekend getaway villa near Yoshitha Infra developments" class="lo-visual-img" data-lo-image="2" loading="lazy">
+
+          <!-- LEFT: Info block -->
+          <div class="lo-info">
+            <span class="lo-eyebrow">PERFECTLY CONNECTED</span>
+            <h2 class="lo-title">Location <span class="location-overview-color">Overview</span></h2>
+            <p class="lo-subtitle">Strategically located for high returns and convenience. Everything you need is just minutes away.</p>
+            <a href="https://maps.app.goo.gl/pRb4MLJV7ENXF8cc7" target="_blank" rel="noopener" class="lo-map-btn">
+              <span>View on Map</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
           </div>
 
-          <div class="lo-accordion" id="lo-accordion">
-            <!-- Item 1 -->
-            <div class="lo-item is-open" data-lo-index="0">
-              <button class="lo-item-header" aria-expanded="true">
-                <span class="lo-item-title">Major Landmarks</span>
-                <span class="lo-item-icon"><span></span><span></span></span>
-              </button>
-              <div class="lo-item-content">
-                <div class="lo-item-inner">
-                  <ul class="lo-points">
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                       Leading schools and colleges within easy reach
-                    </li>
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                      Hospitals, banks & daily essentials nearby
-                    </li>
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                      Shopping, dining & lifestyle destinations close by
-                    </li>
-                  </ul>
-                  <!-- <a href="#gallery" class="lo-learn-more">Learn More</a> -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="lo-item" data-lo-index="1">
-              <button class="lo-item-header" aria-expanded="false">
-                <span class="lo-item-title">Connectivity</span>
-                <span class="lo-item-icon"><span></span><span></span></span>
-              </button>
-              <div class="lo-item-content">
-                <div class="lo-item-inner">
-                  <ul class="lo-points">
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                      Near Regional Ring Road (RRR) 
-                    </li>
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                      Easy access to Hyderabad International Airport
-                    </li>
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                     Excellent connectivity to Bangalore Highway (NH-44)
-                    </li>
-                  </ul>
-                  <!-- <a href="#gallery" class="lo-learn-more">Learn More</a> -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="lo-item" data-lo-index="2">
-              <button class="lo-item-header" aria-expanded="false">
-                <span class="lo-item-title">Growth Corridor </span>
-                <span class="lo-item-icon"><span></span><span></span></span>
-              </button>
-              <div class="lo-item-content">
-                <div class="lo-item-inner">
-                  <ul class="lo-points">
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                     Surrounded by rapidly developing investment zones
-                    </li>
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                      Near industrial & employment growth hubs
-                    </li>
-                    <li class="lo-point">
-                      <span class="lo-point-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                      High appreciation potential for future investments
-                    </li>
-                  </ul>
-                  <!-- <a href="#gallery" class="lo-learn-more">Learn More</a> -->
-                </div>
-              </div>
+          <!-- CENTER: Map with custom pin -->
+          <div class="lo-map-visual">
+            <iframe
+              class="lo-map-iframe"
+              src="https://www.google.com/maps?q=17.0241402,78.0966875&z=16&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map showing Yoshitha's Real Rise location"></iframe>
+            <div class="lo-map-pin" aria-hidden="true">
+              <!-- <span class="lo-pin-halo"></span>
+              <span class="lo-pin-ping"></span> -->
+              <!-- <svg class="lo-pin-svg" width="40" height="52" viewBox="0 0 40 52" fill="none">
+                <defs>
+                  <clipPath id="lo-pin-clip">
+                    <path d="M20 51C20 51 37 33.5 37 20C37 9.5 29.5 1 20 1C10.5 1 3 9.5 3 20C3 33.5 20 51 20 51Z"/>
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#lo-pin-clip)">
+                  <path d="M20,19 L20,-51 A70,70 0 0,1 80.6,54 Z" fill="#4bb749"/>
+                  <path d="M20,19 L80.6,54 A70,70 0 0,1 -40.6,54 Z" fill="#008ece"/>
+                  <path d="M20,19 L-40.6,54 A70,70 0 0,1 20,-51 Z" fill="#f9b012"/>
+                </g>
+                <path d="M20 51C20 51 37 33.5 37 20C37 9.5 29.5 1 20 1C10.5 1 3 9.5 3 20C3 33.5 20 51 20 51Z" fill="none" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="20" cy="19" r="8.5" fill="#ffffff"/>
+              </svg> -->
             </div>
           </div>
+
+          <!-- RIGHT: Auto-scrolling nearby landmarks -->
+          <div class="lo-list-wrap">
+            <div class="lo-list-fade lo-list-fade-top" aria-hidden="true"></div>
+            <div class="lo-list-track">
+
+              <div class="lo-list-item">
+                <span class="lo-list-icon lo-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L9 4h6l5 16"/><path d="M7 14h10"/><path d="M12 8v2"/></svg>
+                </span>
+                <span class="lo-list-name">Bangalore Highway</span>
+                <span class="lo-list-time">2 mins</span>
+              </div>
+              <div class="lo-list-item">
+                <span class="lo-list-icon lo-icon-yellow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l5-4 5 4v14"/><path d="M15 21V11h4v10"/></svg>
+                </span>
+                <span class="lo-list-name">Shadnagar Town</span>
+                <span class="lo-list-time">10 mins</span>
+              </div>
+              <div class="lo-list-item">
+                <span class="lo-list-icon lo-icon-blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </span>
+                <span class="lo-list-name">Rajiv Gandhi Airport</span>
+                <span class="lo-list-time">20 mins</span>
+              </div>
+              <div class="lo-list-item">
+                <span class="lo-list-icon lo-icon-green-dark">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </span>
+                <span class="lo-list-name">IT Parks &amp; Hubs</span>
+                <span class="lo-list-time">25 mins</span>
+              </div>
+
+              <!-- duplicate set for seamless loop -->
+              <div class="lo-list-item" aria-hidden="true">
+                <span class="lo-list-icon lo-icon-green">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L9 4h6l5 16"/><path d="M7 14h10"/><path d="M12 8v2"/></svg>
+                </span>
+                <span class="lo-list-name">Bangalore Highway</span>
+                <span class="lo-list-time">2 mins</span>
+              </div>
+              <div class="lo-list-item" aria-hidden="true">
+                <span class="lo-list-icon lo-icon-yellow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l5-4 5 4v14"/><path d="M15 21V11h4v10"/></svg>
+                </span>
+                <span class="lo-list-name">Shadnagar Town</span>
+                <span class="lo-list-time">10 mins</span>
+              </div>
+              <div class="lo-list-item" aria-hidden="true">
+                <span class="lo-list-icon lo-icon-blue">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </span>
+                <span class="lo-list-name">Rajiv Gandhi Airport</span>
+                <span class="lo-list-time">20 mins</span>
+              </div>
+              <div class="lo-list-item" aria-hidden="true">
+                <span class="lo-list-icon lo-icon-green-dark">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </span>
+                <span class="lo-list-name">IT Parks &amp; Hubs</span>
+                <span class="lo-list-time">25 mins</span>
+              </div>
+
+            </div>
+            <div class="lo-list-fade lo-list-fade-bottom" aria-hidden="true"></div>
+          </div>
+
         </div>
       </div>
     </section>

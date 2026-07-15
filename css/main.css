@@ -1841,14 +1841,40 @@ iframe.sg-img {
   padding: 0 2rem;
 }
 
-.nri-header {
-  max-width: 100%;
-  margin: 0 auto 3.5rem;
-  text-align: center;
+.nri-top {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.nri-top-left {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  gap: 1.75rem;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.nri-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background-color: rgba(10, 54, 92, 0.06);
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nri-tag svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 .nri-title {
@@ -1860,20 +1886,225 @@ iframe.sg-img {
   letter-spacing: -0.02em;
 }
 
-.nri-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  /* align-items: left; */
-  text-align: left;
+.nri-subtitle {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
-.nri-text p {
-  font-size: 1.05rem;
-  text-align: left;
+.nri-desc {
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.7;
-  align-items: left;
+  max-width: 46ch;
+}
+
+.nri-feature-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.nri-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.nri-feature-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.nri-feature-icon--blue { color: var(--color-blue); }
+.nri-feature-icon--green { color: var(--color-green-light); }
+.nri-feature-icon--yellow { color: var(--color-yellow); }
+
+.nri-feature-label {
+  font-family: var(--font-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.4;
+}
+
+/* ─── World map visual ─── */
+.nri-map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 600 / 300;
+}
+
+.nri-map-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.nri-line {
+  stroke-width: 1.75;
+  stroke-dasharray: 5 5;
+}
+
+.nri-line--usa { stroke: var(--color-primary); }
+.nri-line--uk { stroke: var(--color-blue); }
+.nri-line--uae { stroke: var(--color-green-light); }
+.nri-line--aus { stroke: var(--color-yellow); }
+
+/* Pins anchor at the dot (last child) so it lands exactly on the map coordinate;
+   the badge floats above it, connected by a short stem. */
+.nri-pin {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  transform: translate(-50%, -100%);
+}
+
+.nri-pin--usa { left: 13%;   top: 31.7%; }
+.nri-pin--uk  { left: 48%;   top: 15%; }
+.nri-pin--uae { left: 55.8%; top: 36.7%; }
+.nri-pin--aus { left: 83.3%; top: 71.7%; }
+
+.nri-pin-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.65rem;
+  background-color: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px -8px rgba(10, 54, 92, 0.3);
+  font-family: var(--font-secondary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.nri-pin-flag {
+  width: 19px;
+  height: 13px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(10, 54, 92, 0.12);
+  display: block;
+}
+
+.nri-pin-stem {
+  width: 1.5px;
+  height: 14px;
+  background-color: rgba(10, 54, 92, 0.35);
+}
+
+.nri-pin-stem--navy   { background-color: var(--color-primary); }
+.nri-pin-stem--blue   { background-color: var(--color-blue); }
+.nri-pin-stem--green  { background-color: var(--color-green-light); }
+.nri-pin-stem--yellow { background-color: var(--color-yellow); }
+
+.nri-pin-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+.nri-pin-dot--navy   { background-color: var(--color-primary); }
+.nri-pin-dot--blue   { background-color: var(--color-blue); }
+.nri-pin-dot--green  { background-color: var(--color-green-light); }
+.nri-pin-dot--yellow { background-color: var(--color-yellow); }
+
+.nri-hub {
+  position: absolute;
+  left: 70%;
+  top: 46.7%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  transform: translate(-50%, -50%);
+}
+
+.nri-hub-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 16px 32px -12px rgba(10, 54, 92, 0.35), 0 0 0 10px rgba(255, 255, 255, 0.45);
+}
+
+/* Brand mark: four colour wedges (matching the Real Rise logo) with a white
+   sun disc + thin gold ring offset toward the upper-right, built in pure CSS
+   so it stays crisp at any size without an image dependency. */
+.nri-hub-mark {
+  display: block;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    var(--color-yellow) 0deg 195deg,
+    var(--color-green-light) 195deg 305deg,
+    var(--color-green-dark) 305deg 322deg,
+    var(--color-blue) 322deg 360deg
+  );
+}
+
+.nri-hub-mark::after {
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 42%;
+  width: 46%;
+  height: 46%;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1.5px var(--color-yellow);
+}
+
+.nri-hub-label {
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  background-color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px -6px rgba(10, 54, 92, 0.25);
+}
+
+/* The sitewide "* { border-radius: 0 !important; }" box-UI override (see
+   "1280PX WRAPPER..." section below) flattens every corner on the page.
+   These NRI map/pin/hub pieces are pills and circles by design, so they
+   need their rounding reclaimed the same way header.scrolled .nav-wrapper
+   already does elsewhere in this file. */
+.nri-tag,
+.nri-hub-label,
+.nri-pin-badge {
+  border-radius: 999px !important;
+}
+
+.nri-hub-circle,
+.nri-hub-mark,
+.nri-hub-mark::after,
+.nri-pin-dot {
+  border-radius: 50% !important;
+}
+
+.nri-pin-flag {
+  border-radius: 2px !important;
 }
 
 .nri-link {
@@ -1887,6 +2118,8 @@ iframe.sg-img {
   position: relative;
   width: fit-content;
   padding-bottom: 6px;
+  display: block;
+  margin-bottom: 2.5rem;
 }
 
 .nri-link::after {
@@ -1950,6 +2183,16 @@ iframe.sg-img {
 }
 
 @media (max-width: 992px) {
+  .nri-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .nri-map {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
   .nri-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
@@ -1957,8 +2200,51 @@ iframe.sg-img {
 }
 
 @media (max-width: 600px) {
+  .nri-feature-row {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.5rem;
+  }
+
+  .nri-pin-badge {
+    padding: 0.24rem 0.5rem;
+    gap: 0.25rem;
+    font-size: 0.56rem;
+  }
+
+  .nri-pin-flag {
+    width: 15px;
+    height: 10px;
+  }
+
+  .nri-hub-circle {
+    width: 52px;
+    height: 52px;
+  }
+
+  .nri-hub-mark {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nri-hub-label {
+    font-size: 0.66rem;
+    padding: 0.16rem 0.5rem;
+  }
+
   .nri-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .nri-pin-badge span,
+  .nri-pin-badge {
+    font-size: 0.5rem;
+  }
+
+  .nri-pin-flag {
+    width: 13px;
+    height: 9px;
   }
 }
 
@@ -1985,103 +2271,200 @@ iframe.sg-img {
 
 .cf-grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 4rem;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 2rem;
+  align-items: stretch;
 }
 
+/* ─── Info panel (dark, image-backed) ─── */
 .cf-info {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem 2.75rem;
+  border-radius: 28px;
+  overflow: hidden;
+  color: #ffffff;
+  background-image:
+    linear-gradient(115deg, rgba(4, 16, 32, 0.95) 0%, rgba(8, 34, 62, 0.9) 45%, rgba(10, 54, 92, 0.65) 100%),
+    url('../Assets/Amenities/garden-sculpture-dusk.webp');
+  background-size: cover;
+  background-position: right center;
+  box-shadow: 0 30px 60px -25px rgba(10, 54, 92, 0.35);
 }
 
-.cf-info h2 {
-  padding-bottom: 3rem;
+.cf-info::after {
+  content: '';
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -6%;
+  height: 40%;
+  background: linear-gradient(90deg, var(--color-green-dark), var(--color-green-light));
+  opacity: 0.35;
+  transform: rotate(-4deg);
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cf-info > * {
+  position: relative;
+  z-index: 1;
 }
 
 .cf-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-secondary);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-yellow);
+}
+
+.cf-tag-dash {
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-yellow);
 }
 
 .cf-heading {
   font-family: var(--font-primary);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
   font-weight: 800;
-  color: var(--color-primary);
-  line-height: 1.15;
+  color: #ffffff;
+  line-height: 1.18;
   letter-spacing: -0.02em;
-  margin-bottom: 2.5rem;
+}
+
+.cf-heading-accent {
+  color: var(--color-yellow);
+}
+
+.cf-subtext {
+  font-family: var(--font-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 34ch;
+}
+
+.cf-heading-underline {
+  display: block;
+  width: 56px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--color-green-light);
+  margin-top: -0.5rem;
 }
 
 .cf-contact-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
 }
 
 .cf-contact-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  transition: var(--transition-fast);
 }
 
-.cf-contact-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--color-primary);
+.cf-contact-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Solid, filled icon badges — used inside the dark info panel */
+.cf-icon-solid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   flex-shrink: 0;
-  margin-top: 0.15rem;
+  color: #ffffff;
 }
 
-.cf-contact-icon svg {
-  width: 100%;
-  height: 100%;
+.cf-icon-solid svg {
+  width: 19px;
+  height: 19px;
 }
+
+.cf-icon-solid--green { background-color: var(--color-green-light); }
+.cf-icon-solid--blue   { background-color: var(--color-blue); }
+.cf-icon-solid--yellow { background-color: var(--color-yellow); }
 
 .cf-contact-text h4 {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #ffffff;
   margin-bottom: 0.15rem;
 }
 
-.cf-contact-text p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+.cf-contact-text p,
+.cf-contact-text a {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+
+.cf-contact-text a:hover {
+  color: var(--color-yellow);
 }
 
 .cf-follow {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .cf-follow > span {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .cf-social-icons {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.6rem;
 }
 
 .cf-social-icons a {
-  width: 18px;
-  height: 18px;
-  color: var(--color-primary);
-  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  opacity: 0.85;
   transition: var(--transition-fast);
 }
 
 .cf-social-icons a:hover {
   opacity: 1;
-  color: var(--color-blue);
+  border-color: var(--color-green-light);
+  background-color: var(--color-green-light);
+  transform: translateY(-2px);
 }
 
 .cf-social-icons svg {
@@ -2090,14 +2473,14 @@ iframe.sg-img {
   fill: currentColor;
 }
 
-/* Contact Form UI */
+/* ─── Contact Form UI ─── */
 .cf-form-panel {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border: 1px solid rgba(10, 54, 92, 0.08);
-  border-radius: 24px;
-  padding: 2.75rem;
+  border-radius: 28px;
+  padding: 2.5rem;
   box-shadow: 0 30px 60px -25px rgba(10, 54, 92, 0.18);
 }
 
@@ -2106,7 +2489,8 @@ iframe.sg-img {
   width: 100%;
   margin-top: 0.75rem;
   padding: 1rem 1.75rem;
-  background-color: #10241c;
+  background-color:#4BB749;
+  /* background: linear-gradient(100deg, var(--color-primary) 0%, var(--color-blue) 45%, var(--color-green-light) 100%); */
   color: #ffffff;
   border: none;
   border-radius: 12px;
@@ -2119,14 +2503,14 @@ iframe.sg-img {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  box-shadow: 0 12px 24px -10px rgba(16, 36, 28, 0.45);
+  box-shadow: 0 12px 24px -10px rgba(10, 54, 92, 0.45);
   transition: var(--transition-fast), transform 0.25s ease;
 }
 
 .cf-submit-btn:hover {
-  background-color: #193a2c;
+  filter: brightness(1.06);
   transform: translateY(-2px);
-  box-shadow: 0 16px 28px -10px rgba(16, 36, 28, 0.5);
+  box-shadow: 0 16px 28px -10px rgba(10, 54, 92, 0.5);
 }
 
 .cf-submit-btn:active {
@@ -2154,8 +2538,54 @@ iframe.sg-img {
   position: relative;
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-field-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.form-field-col {
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
-  margin-bottom: 1.4rem;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Pastel, tinted icon badges — used beside form fields & the features strip */
+.cf-icon-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1.65rem;
+}
+
+.cf-icon-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cf-icon-badge--green {
+  background-color: rgba(75, 183, 73, 0.12);
+  color: var(--color-green-light);
+}
+
+.cf-icon-badge--blue {
+  background-color: rgba(0, 142, 206, 0.12);
+  color: var(--color-blue);
+}
+
+.cf-icon-badge--yellow {
+  background-color: rgba(249, 176, 18, 0.14);
+  color: var(--color-yellow);
 }
 
 .form-label {
@@ -2163,6 +2593,11 @@ iframe.sg-img {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-primary);
+}
+
+.form-label-optional {
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
 .form-input {
@@ -2180,7 +2615,7 @@ iframe.sg-img {
 
 textarea.form-input {
   resize: vertical;
-  min-height: 120px;
+  min-height: 100px;
 }
 
 .form-input::placeholder {
@@ -2216,6 +2651,7 @@ textarea.form-input {
   color: #ef4444;
   font-weight: 500;
   display: none;
+  padding-left: calc(40px + 0.85rem);
 }
 
 .form-group.error .form-error-msg {
@@ -2243,6 +2679,7 @@ textarea.form-input {
 .cf-captcha-group.error .form-error-msg {
   display: block;
   margin-top: 0.5rem;
+  padding-left: 0;
 }
 
 .cf-form-note {
@@ -2255,6 +2692,66 @@ textarea.form-input {
 .cf-form-note.hidden,
 .form-error-msg.hidden {
   display: none;
+}
+
+.cf-privacy-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+  font-family: var(--font-secondary);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.cf-privacy-note svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--color-green-light);
+}
+
+/* ─── Features strip below the contact grid ─── */
+.cf-features-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px -30px rgba(10, 54, 92, 0.25);
+}
+
+.cf-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.cf-features-strip .cf-icon-badge {
+  width: 46px;
+  height: 46px;
+  margin-top: 0;
+}
+
+.cf-features-strip .cf-icon-badge svg {
+  width: 21px;
+  height: 21px;
+}
+
+.cf-feature-text h5 {
+  font-family: var(--font-primary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.15rem;
+}
+
+.cf-feature-text p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
 /* Footer (dark, inside the combined section) */
@@ -2376,7 +2873,16 @@ textarea.form-input {
 @media (max-width: 992px) {
   .cf-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
+  }
+
+  .cf-info {
+    padding: 2.5rem;
+  }
+
+  .cf-features-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
   }
 
   .cf-footer-row {
@@ -2408,13 +2914,38 @@ textarea.form-input {
     padding: 3rem 0;
   }
 
+  .cf-info {
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+  }
+
   .cf-form-panel {
     padding: 1.75rem;
     border-radius: 18px;
   }
 
-  .cf-heading {
-    margin-bottom: 1.75rem;
+  .cf-features-strip {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .form-field-row {
+    gap: 0.6rem;
+  }
+
+  .cf-icon-badge {
+    width: 34px;
+    height: 34px;
+    margin-top: 1.55rem;
+  }
+
+  .cf-icon-badge svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .form-error-msg {
+    padding-left: calc(34px + 0.6rem);
   }
 }
 

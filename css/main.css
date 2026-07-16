@@ -1630,9 +1630,9 @@ iframe.sg-img {
   }
 }
 
-/* ─── Testimonials Section — mirrors Smart Investors split-panel ─── */
+/* ─── Testimonials Section — dark info panel + light card carousel ─── */
 .tm-section {
-  background-color: #0d1b2a;
+  background-color: #eef1f4;
   min-height: 100vh;
   display: flex;
   align-items: stretch;
@@ -1653,14 +1653,35 @@ iframe.sg-img {
   position: sticky;
   top: 0;
   height: 100vh;
+  background-color: #0a1826;
+  z-index: 2;
+  overflow: hidden;
+  /* clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); */
+}
+
+.tm-left-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(200deg, rgba(10, 24, 38, 0.65) 0%, rgba(10, 24, 38, 0.94) 55%, #0a1826 100%),
+    url('../Assets/Img/bg-overlay-buildings.webp');
+  background-repeat: no-repeat;
+  background-position: left bottom, left bottom;
+  background-size: cover, 130%;
+  filter: brightness(0.9) saturate(1.4) hue-rotate(140deg);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+
+.tm-left-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.75rem;
-  padding: 5rem 2.5rem 5rem 3.5rem;
-  background-color: #0d1b2a;
-  z-index: 2;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 1.6rem;
+  padding: 5rem 3.5rem 5rem 3.5rem;
 }
 
 .tm-heading {
@@ -1672,11 +1693,72 @@ iframe.sg-img {
   letter-spacing: -0.03em;
 }
 
+.tm-heading-accent {
+  color: var(--color-yellow);
+}
+
 .tm-desc {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.52);
   line-height: 1.65;
-  max-width: 420px;
+  max-width: 400px;
+}
+
+/* Trust badges row */
+.tm-trust-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+  margin-top: 0.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tm-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.tm-trust-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.tm-trust-icon--green {
+  background-color: rgba(75, 183, 73, 0.16);
+  color: var(--color-green-light);
+}
+
+.tm-trust-icon--blue {
+  background-color: rgba(0, 142, 206, 0.16);
+  color: var(--color-blue);
+}
+
+.tm-trust-icon--orange {
+  background-color: rgba(249, 176, 18, 0.16);
+  color: var(--color-yellow);
+}
+
+.tm-trust-text {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.5;
+}
+
+.tm-trust-text strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.tm-trust-icon--green ~ .tm-trust-text strong {
+  color: var(--color-green-light);
 }
 
 /* Navigation arrows in left panel */
@@ -1695,8 +1777,8 @@ iframe.sg-img {
   height: 48px;
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.14);
-  background-color: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.55);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.65);
   cursor: pointer;
   transition:
     background-color 0.25s ease,
@@ -1706,17 +1788,23 @@ iframe.sg-img {
   flex-shrink: 0;
 }
 
+.tm-nav-btn--primary {
+  background-color: var(--color-green-light);
+  border-color: var(--color-green-light);
+  color: #0a1826;
+}
+
 .tm-nav-btn:not(:disabled):hover {
   background-color: var(--color-green-light);
   border-color: var(--color-green-light);
-  color: #0d1b2a;
+  color: #0a1826;
   transform: scale(1.08);
 }
 
 .tm-nav-btn:not(:disabled):active {
   background-color: #3da83b;
   border-color: #3da83b;
-  color: #0d1b2a;
+  color: #0a1826;
   transform: scale(0.95);
 }
 
@@ -1732,24 +1820,44 @@ iframe.sg-img {
 .tm-right-panel {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1;
   min-width: 0;
-  background-color: #0d1b2a;
+  background-color: #eef1f4;
+  position: relative;
+  overflow: hidden;
+}
+
+.tm-right-bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 260px;
+  height: 200px;
+  background-image: url('../Assets/Img/bg-overlay-buildings.webp');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 260px auto;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Horizontally scrollable track */
 .tm-cards-track {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 5rem 3rem 5rem 2.5rem;
-  flex: 1;
+  padding: 3rem 4rem 2.5rem 3rem;
   scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
   -ms-overflow-style: none;
   cursor: grab;
+  position: relative;
+  z-index: 2;
 }
 
 .tm-cards-track::-webkit-scrollbar {
@@ -1760,42 +1868,84 @@ iframe.sg-img {
   cursor: grabbing;
 }
 
-/* Individual testimonial card */
+/* Individual testimonial card — fixed, equal size for every card */
 .tm-card {
   flex-shrink: 0;
-  width: min(360px, 82vw);
-  min-height: 260px;
-  border-radius: 22px;
-  background-color: #131f2e;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  width: min(320px, 80vw);
+  height: 358px;
+  border-radius: 24px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 30px rgba(15, 35, 60, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(1.5rem, 2.5vw, 2.25rem);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  justify-content: flex-start;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  position: relative;
+  scroll-snap-align: center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.tm-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(75, 183, 73, 0.35);
+.tm-card.is-featured {
+  transform: translateY(-10px);
+  box-shadow: 0 28px 55px rgba(15, 35, 60, 0.16);
+  z-index: 3;
 }
 
-/* Quote text */
+/* Quote icon (small, top-left) */
+.tm-card-quote-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  margin-bottom: 1.1rem;
+  flex-shrink: 0;
+}
+
+.tm-card[data-tm-accent="green"] .tm-card-quote-icon {
+  background-color: rgba(75, 183, 73, 0.14);
+  color: var(--color-green-light);
+}
+
+.tm-card[data-tm-accent="blue"] .tm-card-quote-icon {
+  background-color: rgba(0, 142, 206, 0.14);
+  color: var(--color-blue);
+}
+
+.tm-card[data-tm-accent="orange"] .tm-card-quote-icon {
+  background-color: rgba(249, 176, 18, 0.14);
+  color: var(--color-yellow);
+}
+
+/* Large decorative closing quote — only on the featured/blue card */
+.tm-card-quote-icon-lg {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  color: rgba(0, 142, 206, 0.14);
+  pointer-events: none;
+}
+
+/* Quote text — clamped so every card holds the same amount regardless of length */
 .tm-card-quote {
   font-family: var(--font-primary);
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
   font-weight: 400;
-  color: #ffffff;
-  line-height: 1.5;
+  color: #16222f;
+  line-height: 1.55;
   letter-spacing: -0.01em;
 }
 
-/* Author block */
+/* Author block — pinned to the card's bottom edge */
 .tm-card-author {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  margin-top: 1.75rem;
+  margin-top: auto;
+  padding-top: 1.75rem;
+  position: relative;
+  z-index: 1;
 }
 
 .tm-card-avatar {
@@ -1818,15 +1968,53 @@ iframe.sg-img {
   font-family: var(--font-primary);
   font-size: 0.92rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #16222f;
   letter-spacing: -0.01em;
 }
 
 .tm-author-role {
   font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(22, 34, 47, 0.5);
   font-weight: 500;
   letter-spacing: 0.01em;
+}
+
+/* Pagination — dots flanked by leaf ornaments */
+.tm-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.tm-leaf {
+  display: flex;
+  color: rgba(75, 183, 73, 0.35);
+}
+
+.tm-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.tm-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(22, 34, 47, 0.18);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.tm-dot.is-active {
+  background-color: var(--color-green-light);
+  transform: scale(1.25);
 }
 
 /* ─── NRI Support Section ─── */
@@ -3215,10 +3403,13 @@ textarea.form-input {
     min-width: 0;
     position: relative;
     height: auto;
+    clip-path: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .tm-left-content {
     gap: 1rem;
     padding: 2.5rem 1.5rem 1.75rem;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .tm-heading {
@@ -3229,6 +3420,13 @@ textarea.form-input {
     font-size: 0.85rem;
     line-height: 1.55;
     max-width: none;
+  }
+
+  .tm-trust-row {
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 0.25rem;
+    padding-top: 1.25rem;
   }
 
   .tm-nav-arrows {
@@ -3243,15 +3441,20 @@ textarea.form-input {
   /* Cards become a compact, touch-friendly horizontal scroller */
   .tm-cards-track {
     align-items: stretch;
-    padding: 1.5rem 1.5rem 2rem;
+    padding: 1.5rem 1.5rem 1.5rem;
     gap: 1rem;
   }
 
   .tm-card {
     width: min(300px, 78vw);
-    min-height: 0;
+    height: 300px;
     padding: 1.5rem;
     border-radius: 18px;
+  }
+
+  .tm-card.is-featured {
+    transform: none;
+    box-shadow: 0 12px 30px rgba(15, 35, 60, 0.08);
   }
 
   .tm-card-quote {
@@ -3276,11 +3479,15 @@ textarea.form-input {
   .tm-author-role {
     font-size: 0.72rem;
   }
+
+  .tm-pagination {
+    padding: 0 1.5rem 2rem;
+  }
 }
 
 @media (max-width: 480px) {
   .tm-cards-track {
-    padding: 1.25rem 1.25rem 1.75rem;
+    padding: 1.25rem 1.25rem 1.25rem;
     gap: 0.85rem;
   }
 
@@ -3291,6 +3498,10 @@ textarea.form-input {
 
   .tm-card-quote {
     font-size: 0.88rem;
+  }
+
+  .tm-trust-text {
+    font-size: 0.78rem;
   }
 }
 

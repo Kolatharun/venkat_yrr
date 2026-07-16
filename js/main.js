@@ -643,13 +643,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 10b. Location Overview — map + auto-scrolling landmark list (pure CSS animation, no JS needed)
 
-  // 11. Testimonials — drag-to-scroll + arrow navigation
+  // 11. Testimonials — drag-to-scroll + arrow navigation + dots + featured card
   (function () {
     const track   = document.getElementById('tm-cards-track');
     const prevBtn = document.getElementById('tm-prev-btn');
     const nextBtn = document.getElementById('tm-next-btn');
+    const dots    = Array.from(document.querySelectorAll('#tm-dots .tm-dot'));
+    const cards   = Array.from(document.querySelectorAll('.tm-card'));
 
     if (!track) return;
+
+    // ── Dot pagination + featured-card highlight (nearest to track center) ──
+    if (cards.length) {
+      const getCenterIdx = () => {
+        const trackCenter = track.scrollLeft + track.clientWidth / 2;
+        let closestIdx = 0;
+        let closestDist = Infinity;
+        cards.forEach((card, idx) => {
+          const cardCenter = card.offsetLeft - track.offsetLeft + track.scrollLeft + card.offsetWidth / 2;
+          const dist = Math.abs(cardCenter - trackCenter);
+          if (dist < closestDist) {
+            closestDist = dist;
+            closestIdx = idx;
+          }
+        });
+        return closestIdx;
+      };
+
+      const updateActiveState = () => {
+        const activeIdx = getCenterIdx();
+        cards.forEach((card, idx) => card.classList.toggle('is-featured', idx === activeIdx));
+        dots.forEach((dot, idx) => {
+          const active = idx === activeIdx;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.dataset.tmIndex, 10);
+          const card = cards[idx];
+          if (card) {
+            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+          }
+        });
+      });
+
+      track.addEventListener('scroll', updateActiveState, { passive: true });
+      updateActiveState();
+    }
 
     // ── Drag to scroll ──────────────────────────────────────────────────
     let isDown = false, startX, scrollStart;
@@ -1130,7 +1173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overwrite: 'auto',
         force3D: true,
         lazy: false,
-        clearProps: 'filter',
+        clearProps: 'filter,transform',
         scrollTrigger: {
           trigger: section,
           start: 'top 85%',

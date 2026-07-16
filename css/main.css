@@ -579,18 +579,18 @@ header.scrolled .logo-img.logo-sticky {
   position: relative;
   overflow: hidden;
   padding: 100px 0;
-  background-color: #0d1b2a;
+  background-color: var(--bg-site);
 }
 
-.about-bg-image {
+.about-leaf-decor {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center;
-  z-index: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  height: auto;
+  opacity: 0.35;
   pointer-events: none;
+  z-index: 0;
 }
 
 .about > .container {
@@ -608,59 +608,39 @@ header.scrolled .logo-img.logo-sticky {
   align-items: start;
 }
 
-.about-photo-card {
-  display: block;
-  grid-column: 2;
-  grid-row: 1 / 3;
-  justify-self: end;
-  align-self: start;
-  width: 100%;
-  max-width: 500px;
-  aspect-ratio: 469 / 450;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-.about-photo-card img,
-.about-photo-card video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-reel-wrap {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.about-reel-wrap:hover {
-  transform: scale(1.02);
-}
-
+/* ─── Left column: copy, stats, points ─── */
 .about-content {
-  grid-column: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 520px;
+  max-width: 560px;
 }
 
 .about-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-family: var(--font-primary);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-green-dark);
   text-transform: uppercase;
   letter-spacing: 0.15em;
 }
 
+.about-tag-dash {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-green-light);
+  flex-shrink: 0;
+}
+
 .about-title {
+  font-family: var(--font-primary);
   font-size: clamp(2rem, 3.5vw, 3.2rem);
-  font-weight: 700;
-  color: #ffffff;
+  font-weight: 800;
+  color: var(--color-primary);
   line-height: 1.15;
 }
 
@@ -668,66 +648,156 @@ header.scrolled .logo-img.logo-sticky {
   color: var(--color-yellow);
 }
 
+.about-title-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.about-title-divider-bar {
+  display: block;
+  height: 3px;
+}
+
+.about-title-divider-bar--solid {
+  width: 34px;
+  background-color: var(--color-green-dark);
+}
+
+.about-title-divider-bar--light {
+  width: 16px;
+  background-color: var(--color-green-light);
+  opacity: 0.5;
+}
+
 .about-text {
+  font-family: var(--font-secondary);
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-muted);
   line-height: 1.7;
 }
 
+/* Points row */
 .about-points {
-  grid-column: 1;
-  max-width: 520px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem 2rem;
-  /* margin-top: 2rem; */
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 2rem;
 }
 
 .about-point-card {
   transition: var(--transition-fast);
 }
 
-.about-point-card:hover .about-point-icon-box {
-  color: var(--color-green-light);
-  transform: translateY(-2px);
-}
-
-.about-point-card h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-top: 0.5rem;
-  margin-bottom: 1.2rem;
-}
-
-.about-point-card p {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.5;
+.about-point-card + .about-point-card {
+  border-left: 1px solid var(--border-light);
+  padding-left: 2rem;
 }
 
 .about-point-icon-box {
-  width: auto;
-  height: auto;
-  background-color: transparent;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(75, 183, 73, 0.12);
   display: flex;
   align-items: center;
-  justify-content: start;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-  border: none;
-  box-shadow: none;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: var(--color-green-light);
   transition: var(--transition-fast);
 }
 
 .about-point-icon-box svg {
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   stroke: currentColor;
   stroke-width: 2;
   fill: none;
+}
+
+.about-point-card:hover .about-point-icon-box {
+  transform: translateY(-3px);
+  background-color: var(--color-green-light);
+  color: #ffffff;
+}
+
+.about-point-card h4 {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.about-point-card p {
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── Right column: video card + trust badges ─── */
+.about-media {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.about-photo-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 469 / 450;
+  overflow: hidden;
+  background-color: #0d1b2a;
+}
+
+.about-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Trust badges row */
+.about-badges {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.about-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.about-badge-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.about-badge-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.about-badge-icon--green  { background-color: rgba(75, 183, 73, 0.12); color: var(--color-green-light); }
+.about-badge-icon--blue   { background-color: rgba(0, 142, 206, 0.12); color: var(--color-blue); }
+.about-badge-icon--yellow { background-color: rgba(249, 176, 18, 0.12); color: var(--color-yellow); }
+
+.about-badge:hover .about-badge-icon {
+  transform: translateY(-3px) scale(1.08);
 }
 
 /* ─── Smart Investors: Dark Navy Horizontal Scroll Section ─── */
@@ -1708,7 +1778,7 @@ iframe.sg-img {
 .tm-trust-row {
   display: flex;
   align-items: flex-start;
-  gap: 1.6rem;
+  gap: 5.6rem;
   margin-top: 0.5rem;
   padding-top: 1.6rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1719,6 +1789,7 @@ iframe.sg-img {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.65rem;
+  flex: 0 0 auto;
 }
 
 .tm-trust-icon {
@@ -1757,18 +1828,11 @@ iframe.sg-img {
   font-weight: 700;
 }
 
-.tm-trust-icon--green ~ .tm-trust-text strong {
+/* .tm-trust-icon--green ~ .tm-trust-text strong {
   color: var(--color-green-light);
-}
+} */
 
-/* Navigation arrows in left panel */
-.tm-nav-arrows {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
+/* Shared nav-arrow button shape — used under the testimonial cards via .tm-nav-btn--light */
 .tm-nav-btn {
   display: flex;
   align-items: center;
@@ -1979,42 +2043,55 @@ iframe.sg-img {
   letter-spacing: 0.01em;
 }
 
-/* Pagination — dots flanked by leaf ornaments */
+/* Pagination — nav arrows under the card track */
 .tm-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
   padding: 0 2rem;
   position: relative;
   z-index: 2;
 }
 
-.tm-leaf {
-  display: flex;
-  color: rgba(75, 183, 73, 0.35);
-}
-
-.tm-dots {
+.tm-pagination-arrows {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.75rem;
 }
 
-.tm-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(22, 34, 47, 0.18);
-  cursor: pointer;
-  padding: 0;
-  transition: background-color 0.25s ease, transform 0.25s ease;
+/* Light-panel variant of .tm-nav-btn — the right panel (under the cards)
+   sits on #eef1f4, not the left panel's dark navy, so it needs its own colors. */
+.tm-nav-btn--light {
+  width: 40px;
+  height: 40px;
+  border-color: var(--border-light);
+  background-color: #ffffff;
+  color: var(--color-primary);
 }
 
-.tm-dot.is-active {
+.tm-nav-btn--light.tm-nav-btn--primary {
   background-color: var(--color-green-light);
-  transform: scale(1.25);
+  border-color: var(--color-green-light);
+  color: #ffffff;
+}
+
+.tm-nav-btn--light:not(:disabled):hover {
+  background-color: var(--color-green-light);
+  border-color: var(--color-green-light);
+  color: #ffffff;
+}
+
+.tm-nav-btn--light:not(:disabled):active {
+  background-color: #3da83b;
+  border-color: #3da83b;
+  color: #ffffff;
+}
+
+.tm-nav-btn--light:disabled {
+  opacity: 0.4;
+  border-color: var(--border-light);
+  background-color: #f3f4f6;
+  color: var(--text-muted);
 }
 
 /* ─── NRI Support Section ─── */
@@ -3367,21 +3444,20 @@ textarea.form-input {
     max-width: none;
   }
 
-  .about-bg-image {
-    display: none;
-  }
-
-  .about-photo-card {
-    grid-column: 1;
-    grid-row: auto;
-    justify-self: stretch;
-    max-width: none;
-    margin: 1rem 0;
-  }
-
   .about-points {
     grid-template-columns: 1fr;
     gap: 1.75rem;
+  }
+
+  .about-point-card + .about-point-card {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--border-light);
+    padding-top: 1.75rem;
+  }
+
+  .about-media {
+    max-width: 100%;
   }
 
   .features-grid {
@@ -3424,13 +3500,9 @@ textarea.form-input {
 
   .tm-trust-row {
     flex-wrap: wrap;
-    gap: 1.25rem;
+    gap: 3.25rem;
     margin-top: 0.25rem;
     padding-top: 1.25rem;
-  }
-
-  .tm-nav-arrows {
-    margin-top: 0.25rem;
   }
 
   .tm-nav-btn {
@@ -3515,6 +3587,12 @@ textarea.form-input {
   .nri,
   .features-section {
     padding: 60px 0;
+  }
+
+  .about-badges {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 1rem;
   }
 
   .hero-title {
@@ -4297,9 +4375,9 @@ main > .hero {
   background-color: #0d1b2a !important;
 }
 
-/* About section keeps its own solid dark navy — never made transparent */
+/* About section keeps its own solid white — never made transparent */
 .about {
-  background-color: #0d1b2a !important;
+  background-color: var(--bg-site) !important;
 }
 
 /* Body transparent — Vanta's backgroundColor: 0xffffff acts as the page bg */

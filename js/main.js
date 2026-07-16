@@ -401,19 +401,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // (About Section reveal handled by centralized animation manager)
 
-  // 7b. About Photo Card — hover zoom + lift (desktop only)
+  // 7b. About Video Card — hover zoom + lift (desktop only)
   const aboutPhotoCard = document.querySelector('.about-photo-card');
   if (aboutPhotoCard && window.innerWidth > 1024) {
-    const aboutPhotoImg = aboutPhotoCard.querySelector('img');
+    const aboutVideoEl = aboutPhotoCard.querySelector('.about-video');
 
     aboutPhotoCard.addEventListener('mouseenter', () => {
-      gsap.to(aboutPhotoImg, { scale: 1.1, duration: 0.9, ease: 'power3.out' });
-      gsap.to(aboutPhotoCard, { y: -8, borderColor: 'rgba(255, 255, 255, 0.35)', duration: 0.6, ease: 'power3.out' });
+      if (aboutVideoEl) gsap.to(aboutVideoEl, { scale: 1.06, duration: 0.9, ease: 'power3.out' });
+      gsap.to(aboutPhotoCard, { y: -8, duration: 0.6, ease: 'power3.out' });
     });
 
     aboutPhotoCard.addEventListener('mouseleave', () => {
-      gsap.to(aboutPhotoImg, { scale: 1, duration: 0.7, ease: 'power3.out' });
-      gsap.to(aboutPhotoCard, { y: 0, borderColor: 'rgba(255, 255, 255, 0.15)', duration: 0.6, ease: 'power3.out' });
+      if (aboutVideoEl) gsap.to(aboutVideoEl, { scale: 1, duration: 0.7, ease: 'power3.out' });
+      gsap.to(aboutPhotoCard, { y: 0, duration: 0.6, ease: 'power3.out' });
     });
   }
 
@@ -643,17 +643,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 10b. Location Overview — map + auto-scrolling landmark list (pure CSS animation, no JS needed)
 
-  // 11. Testimonials — drag-to-scroll + arrow navigation + dots + featured card
+  // 11. Testimonials — drag-to-scroll + arrow navigation + featured card
   (function () {
-    const track   = document.getElementById('tm-cards-track');
-    const prevBtn = document.getElementById('tm-prev-btn');
-    const nextBtn = document.getElementById('tm-next-btn');
-    const dots    = Array.from(document.querySelectorAll('#tm-dots .tm-dot'));
-    const cards   = Array.from(document.querySelectorAll('.tm-card'));
+    const track    = document.getElementById('tm-cards-track');
+    const prevBtns = Array.from(document.querySelectorAll('#tm-pagination-prev-btn'));
+    const nextBtns = Array.from(document.querySelectorAll('#tm-pagination-next-btn'));
+    const cards    = Array.from(document.querySelectorAll('.tm-card'));
 
     if (!track) return;
 
-    // ── Dot pagination + featured-card highlight (nearest to track center) ──
+    // ── Featured-card highlight (nearest to track center once scrolled) ──
     if (cards.length) {
       const getCenterIdx = () => {
         const trackCenter = track.scrollLeft + track.clientWidth / 2;
@@ -670,28 +669,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return closestIdx;
       };
 
-      const updateActiveState = () => {
-        const activeIdx = getCenterIdx();
-        cards.forEach((card, idx) => card.classList.toggle('is-featured', idx === activeIdx));
-        dots.forEach((dot, idx) => {
-          const active = idx === activeIdx;
-          dot.classList.toggle('is-active', active);
-          dot.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
+      const setFeatured = (idx) => {
+        cards.forEach((card, i) => card.classList.toggle('is-featured', i === idx));
       };
 
-      dots.forEach((dot) => {
-        dot.addEventListener('click', () => {
-          const idx = parseInt(dot.dataset.tmIndex, 10);
-          const card = cards[idx];
-          if (card) {
-            track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior: 'smooth' });
-          }
-        });
-      });
-
-      track.addEventListener('scroll', updateActiveState, { passive: true });
-      updateActiveState();
+      // Card 1 is featured by default — recalculate only once the user scrolls
+      track.addEventListener('scroll', () => setFeatured(getCenterIdx()), { passive: true });
+      setFeatured(0);
     }
 
     // ── Drag to scroll ──────────────────────────────────────────────────
@@ -742,17 +726,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateArrows() {
-      if (!prevBtn || !nextBtn) return;
-      prevBtn.disabled = track.scrollLeft <= 4;
-      nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      const atStart = track.scrollLeft <= 4;
+      const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+      prevBtns.forEach((btn) => { btn.disabled = atStart; });
+      nextBtns.forEach((btn) => { btn.disabled = atEnd; });
     }
 
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    if (prevBtns.length || nextBtns.length) {
+      prevBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        });
       });
-      nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      nextBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        });
       });
       track.addEventListener('scroll', updateArrows, { passive: true });
       updateArrows();
@@ -1091,11 +1080,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // 3. Paragraph
       'p, .about-text, .nri-text p',
       // 4. Cards
-      '.stats-card, .feature-card, .si-card, .tm-card, .nri-card, .about-point-card, .lo-list-item, .partner-logo-item, .form-group',
+      '.stats-card, .feature-card, .si-card, .tm-card, .nri-card, .about-point-card, .about-badge, .lo-list-item, .partner-logo-item, .form-group',
       // 5. Buttons
-      '.btn-primary, .btn-secondary, .cf-submit-btn, .nri-link, .lo-map-btn, .card-cta, .si-nav-arrows button, .tm-nav-arrows button, .sg-controls button, .cf-footer-cta, .btn-video-text, .hero-video-btn',
+      '.btn-primary, .btn-secondary, .cf-submit-btn, .nri-link, .lo-map-btn, .card-cta, .si-nav-arrows button, .tm-pagination-arrows button, .sg-controls button, .cf-footer-cta, .btn-video-text, .hero-video-btn',
       // 6. Images
-      '.about-photo-card, .lo-map-visual, .nri-card img, .cf-footer-logo, .hero-bg-image, .about-bg-image, .partner-logo-img, .tm-card-avatar',
+      '.about-photo-card, .lo-map-visual, .nri-card img, .cf-footer-logo, .hero-bg-image, .partner-logo-img, .tm-card-avatar',
       // 7. Statistics
       '.hero-stats, .stats-cards-grid, .stat-number-val, .sg-counter'
     ];

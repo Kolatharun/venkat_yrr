@@ -12,8 +12,8 @@ error_reporting(E_ALL);
 header('Content-Type: application/json');
 
 
-$siteKey = '6Le5gNAsAAAAABqVmMyneZdn4fNI83hMDkIDFtU6';    //6LdOsfErAAAAAFZQH0L1Vid2_ZbQ3lKyZd5pQzbm
-$secretKey = '6Le5gNAsAAAAAIbwihKwL-ibfSOGsT4J-p_0WntD';  //6LdOsfErAAAAAN_N3fZL5C997AxjFjpAw7H6GQLp
+$siteKey = '6Ld41NssAAAAAHa6W6L89RCRC3_eczAI1JhI8eGb';    //6LdOsfErAAAAAFZQH0L1Vid2_ZbQ3lKyZd5pQzbm
+$secretKey = '6Ld41NssAAAAAGokjrhFQKm46ylCk3S1kGzRrh_h';  //6LdOsfErAAAAAN_N3fZL5C997AxjFjpAw7H6GQLp
 
 
 
@@ -27,7 +27,7 @@ $formEmail = 'contactforum@yoshithainfra.in';
 // $emailCc = 'keshanth169@gmail.com';
 //$emailCc = 'shiva.krishna22@gmail.com';
 //$emailBcc = 'sathish@gigaqwal.com';
-$toEmail = 'tharunkola450@gmail.com'; //yoshitha.chandramouli@gmail.com
+$toEmail = 'tharunkola450@gmail.com'; //kalyaninaidu44@gmail.com
 $statusMsg = 'An error occurred. Please try again.';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <body>
             <div class='jumbotron card card-body' style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;'>
             <h2>New Inquiry From Website</h2>
-            <p>Dear Chandramouli,</p>
+            <p>Dear Kalyani,</p>
             <p>We have received your inquiry and will get back to you as soon as possible.</p>
             <p>Here are the details you provided:</p>
             <ul>

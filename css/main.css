@@ -1900,42 +1900,11 @@ iframe.sg-img {
   max-width: 46ch;
 }
 
-.nri-feature-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
-  margin-top: 0.75rem;
-  width: 100%;
-}
-
-.nri-feature {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.nri-feature-icon {
-  width: 26px;
-  height: 26px;
-}
-
-.nri-feature-icon--blue { color: var(--color-blue); }
-.nri-feature-icon--green { color: var(--color-green-light); }
-.nri-feature-icon--yellow { color: var(--color-yellow); }
-
-.nri-feature-label {
-  font-family: var(--font-secondary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  line-height: 1.4;
-}
-
 /* ─── World map visual ─── */
 .nri-map {
   position: relative;
   width: 100%;
-  aspect-ratio: 600 / 300;
+  aspect-ratio: 608 / 322;
 }
 
 .nri-map-svg {
@@ -1967,9 +1936,9 @@ iframe.sg-img {
 }
 
 .nri-pin--usa { left: 13%;   top: 31.7%; }
-.nri-pin--uk  { left: 48%;   top: 15%; }
+.nri-pin--uk  { left: 37%;   top: 15%; }
 .nri-pin--uae { left: 55.8%; top: 36.7%; }
-.nri-pin--aus { left: 83.3%; top: 71.7%; }
+.nri-pin--aus { left: 83.3%; top: 81.7%; }
 
 .nri-pin-badge {
   display: flex;
@@ -2038,7 +2007,7 @@ iframe.sg-img {
   width: 74px;
   height: 74px;
   border-radius: 50%;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   box-shadow: 0 16px 32px -12px rgba(10, 54, 92, 0.35), 0 0 0 10px rgba(255, 255, 255, 0.45);
 }
 
@@ -2193,6 +2162,32 @@ iframe.sg-img {
     margin: 0 auto;
   }
 
+  .nri-pin-badge {
+    padding: 0.28rem 0.58rem;
+    gap: 0.3rem;
+    font-size: 0.62rem;
+  }
+
+  .nri-pin-flag {
+    width: 17px;
+    height: 12px;
+  }
+
+  .nri-hub-circle {
+    width: 62px;
+    height: 62px;
+  }
+
+  .nri-hub-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nri-hub-label {
+    font-size: 0.72rem;
+    padding: 0.18rem 0.55rem;
+  }
+
   .nri-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
@@ -2200,35 +2195,43 @@ iframe.sg-img {
 }
 
 @media (max-width: 600px) {
-  .nri-feature-row {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 1.5rem;
+  .nri-map {
+    max-width: 380px;
   }
 
   .nri-pin-badge {
-    padding: 0.24rem 0.5rem;
-    gap: 0.25rem;
-    font-size: 0.56rem;
+    padding: 0.22rem 0.48rem;
+    gap: 0.22rem;
+    font-size: 0.54rem;
   }
 
   .nri-pin-flag {
-    width: 15px;
+    width: 14px;
+    height: 9px;
+  }
+
+  .nri-pin-stem {
     height: 10px;
   }
 
+  .nri-pin-dot {
+    width: 7px;
+    height: 7px;
+  }
+
   .nri-hub-circle {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
   }
 
   .nri-hub-mark {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 
   .nri-hub-label {
-    font-size: 0.66rem;
-    padding: 0.16rem 0.5rem;
+    font-size: 0.62rem;
+    padding: 0.15rem 0.48rem;
   }
 
   .nri-grid {
@@ -2237,14 +2240,18 @@ iframe.sg-img {
 }
 
 @media (max-width: 420px) {
-  .nri-pin-badge span,
+  .nri-map {
+    max-width: 300px;
+  }
+
   .nri-pin-badge {
-    font-size: 0.5rem;
+    font-size: 0.48rem;
+    padding: 0.18rem 0.4rem;
   }
 
   .nri-pin-flag {
-    width: 13px;
-    height: 9px;
+    width: 12px;
+    height: 8px;
   }
 }
 

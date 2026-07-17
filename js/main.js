@@ -1183,6 +1183,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initSectionRevealAnimations();
 
+  // 12b. Feature Cards — mobile scroll-triggered "hover" reveal
+  // Desktop reveals the background image / dark overlay / white text on :hover (CSS only).
+  // Touch devices can't hover, so on mobile each card triggers the same reveal once it
+  // scrolls ~40-50% into view, and stays revealed (no reset on scroll-out).
+  if (window.innerWidth <= 1024) {
+    const mobileFeatureCards = document.querySelectorAll('.feature-card.content-card');
+
+    if (mobileFeatureCards.length && 'IntersectionObserver' in window) {
+      const cardRevealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.45 });
+
+      mobileFeatureCards.forEach((card) => cardRevealObserver.observe(card));
+    }
+  }
+
   // 13. Masterplan Lightbox Controller
   (function () {
     const openBtn = document.getElementById('open-masterplan-btn');

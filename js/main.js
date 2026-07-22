@@ -417,6 +417,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 7c. About Video — mute/unmute toggle button
+  const aboutVideo = document.getElementById('about-video');
+  const aboutVideoMuteBtn = document.getElementById('about-video-mute');
+  if (aboutVideo && aboutVideoMuteBtn) {
+    const unmutedIconPath = '<path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+    const mutedIconPath = '<path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+
+    const updateMuteIcon = () => {
+      const icon = aboutVideoMuteBtn.querySelector('.about-video-mute-icon');
+      icon.innerHTML = aboutVideo.muted ? mutedIconPath : unmutedIconPath;
+      aboutVideoMuteBtn.setAttribute('aria-label', aboutVideo.muted ? 'Unmute video' : 'Mute video');
+      aboutVideoMuteBtn.setAttribute('aria-pressed', String(!aboutVideo.muted));
+    };
+
+    aboutVideoMuteBtn.addEventListener('click', () => {
+      aboutVideo.muted = !aboutVideo.muted;
+      updateMuteIcon();
+    });
+
+    updateMuteIcon();
+  }
+
   // 8. Bento Grid Card Tilting mouse hover (3D Perspective)
   const bentoCards = document.querySelectorAll('.bento-card');
   if (window.innerWidth > 1024) {
